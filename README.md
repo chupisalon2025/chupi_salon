@@ -1,120 +1,258 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chupi Salong</title>
-  <style>
-    body { font-family: Arial, sans-serif; background:#fffafc; margin:0; padding:0; color:#333; }
-    header { background:linear-gradient(135deg,#ff4a7c,#8e2de2); color:white; text-align:center; padding:40px 20px; }
-    header h1 { margin:0; font-size:2.5em; }
-    nav { background:white; padding:15px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-    nav a { margin:0 15px; font-weight:bold; color:#8e2de2; text-decoration:none; }
-    section { max-width:700px; margin:auto; padding:40px 20px; }
-    h2 { text-align:center; color:#8e2de2; margin-bottom:30px; }
+‏<!DOCTYPE html>
+‏<html lang="sv">
+‏<head>
+‏<meta charset="UTF-8">
+‏<meta name="viewport" content="width=device-width, initial-scale=1.0">
+‏<title>Chupi_salong</title>
+‏<style>
+/* ==========================
+‏   RESET & GLOBAL
+=========================== */
+‏*{margin:0;padding:0;box-sizing:border-box;}
+‏body{font-family:'Lato',sans-serif;background:#fff;color:#333;}
+‏h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+‏a{text-decoration:none;color:inherit;}
+‏button{cursor:pointer;transition:0.3s;}
 
-    form { background:#fff0f7; padding:25px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.08); display:flex; flex-direction:column; gap:15px; }
-    label { font-weight:bold; color:#8e2de2; }
-    input, select { padding:12px; font-size:16px; border:1px solid #ddd; border-radius:10px; }
-    .btns { display:flex; gap:10px; justify-content:space-between; margin-top:15px; }
-    button { flex:1; padding:12px; font-size:16px; border:none; border-radius:10px; cursor:pointer; font-weight:bold; }
-    .whatsapp { background:#25D366; color:white; }
-    .whatsapp:hover { background:#1ebe5d; }
-    .email { background:#8e2de2; color:white; }
-    .email:hover { background:#ff4a7c; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Chupi Salong</h1>
-    <p>Din skönhet är vår stolthet ✨</p>
-  </header>
+/* ==========================
+‏   HEADER
+=========================== */
+‏header{
+‏    background:linear-gradient(135deg,#d4af37,#f5deb3);
+‏    color:#fff;
+‏    text-align:center;
+‏    padding:80px 20px;
+‏    background-size:cover;
+‏    background-position:center;
+‏    background-image:url('https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg');
+‏    position:relative;
+}
+‏header::after{
+‏    content:'';
+‏    position:absolute;
+‏    top:0;left:0;width:100%;height:100%;
+‏    background:rgba(0,0,0,0.4);
+}
+‏header h1,header p{position:relative;z-index:2;}
+‏header h1{font-size:3.5em;margin-bottom:15px;}
+‏header p{font-size:1.4em;}
 
-  <nav>
-    <a href="#booking">Boka tid</a>
-    <a href="#contact">Kontakt</a>
-  </nav>
+/* ==========================
+‏   SERVICES
+=========================== */
+‏.services{
+‏    max-width:1100px;
+‏    margin:50px auto;
+‏    padding:0 20px;
+}
+‏.services h2{
+‏    text-align:center;
+‏    margin-bottom:30px;
+‏    font-size:2.5em;
+‏    color:#d4af37;
+}
+‏.service-item{
+‏    display:flex;
+‏    justify-content:space-between;
+‏    align-items:center;
+‏    padding:20px 15px;
+‏    border-bottom:1px solid #eee;
+‏    background:#fff;
+‏    margin-bottom:15px;
+‏    border-radius:12px;
+‏    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+‏.service-item:hover{transform:scale(1.02);transition:0.3s;}
+‏.service-item button{
+‏    background:#d4af37;
+‏    border:none;
+‏    padding:12px 25px;
+‏    border-radius:6px;
+‏    font-weight:bold;
+‏    color:#fff;
+}
 
-  <!-- Booking Section -->
-  <section id="booking">
-    <h2>Boka tid</h2>
-    <form id="bookingForm">
-      <label for="name">Namn och efternamn</label>
-      <input type="text" id="name" required>
+/* ==========================
+‏   BOOKING FORM
+=========================== */
+‏.booking-form{
+‏    max-width:550px;
+‏    margin:60px auto;
+‏    padding:35px 25px;
+‏    border-radius:15px;
+‏    background:#fff;
+‏    border:2px solid #d4af37;
+‏    display:none;
+‏    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+‏.booking-form h2{text-align:center;margin-bottom:25px;color:#d4af37;}
+‏.booking-form label{display:block;margin-top:12px;font-weight:bold;}
+‏.booking-form input,.booking-form select{
+‏    width:100%;
+‏    padding:12px;
+‏    margin-top:6px;
+‏    border-radius:6px;
+‏    border:1px solid #ccc;
+}
+‏.booking-form button{
+‏    margin-top:25px;
+‏    width:100%;
+‏    background:#d4af37;
+‏    border:none;
+‏    padding:14px;
+‏    font-size:1em;
+‏    font-weight:bold;
+‏    border-radius:8px;
+‏    color:#fff;
+}
 
-      <label for="service">Välj tjänst</label>
-      <select id="service" required>
-        <option value="">-- välj en tjänst --</option>
-        <!-- Klippning -->
-        <option>Herr Klippning - 370 kr - 40 min</option>
-        <option>Klippning kort hår - 470 kr - 45 min</option>
-        <option>Klippning långt hår - 570 kr - 60 min</option>
-        <option>Barnklippning - 350 kr - 30 min</option>
-        <option>Maskinklippning - 270 kr - 30 min</option>
-        <option>Pensionär Herr Klippning - 280 kr - 30 min</option>
-        <option>Pensionär klippning kort hår - 360 kr - 40 min</option>
-        <option>Pensionär klippning långt hår - 460 kr - 50 min</option>
-        <!-- Färgning -->
-        <option>Helfärgning - från 990 kr - 105 min</option>
-        <option>Bottenfärgning - från 790 kr - 90 min</option>
-        <!-- Behandling -->
-        <option>Keratin behandling Re-Born - från 1500 kr - 135 min</option>
-        <option>Paket behandling kort hår - från 2270 kr - 195 min</option>
-        <option>Paket behandling långt hår - från 2570 kr - 225 min</option>
-        <!-- Slingor -->
-        <option>Slingor kort hår - från 1570 kr - 180 min</option>
-        <option>Slingor långt hår - från 1870 kr - 180 min</option>
-        <option>Slingor med folie kort hår -från 1570 kr - 150 min</option>
-        <option>Slingor med folie långt hår - från 1870 kr - 180 min</option>
-      </select>
+/* ==========================
+‏   FOOTER
+=========================== */
+‏footer{
+‏    text-align:center;
+‏    padding:25px;
+‏    background:linear-gradient(135deg,#d4af37,#f5deb3);
+‏    color:#fff;
+‏    margin-top:60px;
+}
 
-      <label for="date">Datum</label>
-      <input type="date" id="date" required>
+/* ==========================
+‏   RESPONSIVE
+=========================== */
+‏@media(max-width:600px){
+‏    .service-item{flex-direction:column;align-items:flex-start;}
+‏    .service-item button{margin-top:10px;width:100%;}
+}
+‏</style>
+‏</head>
+‏<body>
 
-      <label for="time">Tid</label>
-      <input type="time" id="time" required>
+‏<header>
+‏    <h1>Chupi_salong</h1>
+‏    <p>Sofielundsvägen 7, 121 32 Enskededalen</p>
+‏</header>
 
-      <div class="btns">
-        <button type="button" class="whatsapp" onclick="sendWhatsApp()">Boka via WhatsApp</button>
-        <button type="button" class="email" onclick="sendEmail()">Boka via Email</button>
-      </div>
-    </form>
-  </section>
+‏<section class="services">
+‏<h2>Våra Tjänster</h2>
+‏<div class="service-item">
+‏    <div><strong>Herr Klippning</strong><br>370 kr - 40 min</div>
+‏    <button onclick="openBooking('Herr Klippning')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Klippning kort hår</strong><br>470 kr - 45 min</div>
+‏    <button onclick="openBooking('Klippning kort hår')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Klippning långt hår</strong><br>570 kr - 60 min</div>
+‏    <button onclick="openBooking('Klippning långt hår')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Barnklippning</strong><br>350 kr - 30 min</div>
+‏    <button onclick="openBooking('Barnklippning')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Maskinklippning</strong><br>270 kr - 30 min</div>
+‏    <button onclick="openBooking('Maskinklippning')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Pensionär Herr Klippning</strong><br>280 kr - 30 min</div>
+‏    <button onclick="openBooking('Pensionär Herr Klippning')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Pensionär klippning kort hår</strong><br>360 kr - 40 min</div>
+‏    <button onclick="openBooking('Pensionär klippning kort hår')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Pensionär klippning långt hår</strong><br>460 kr - 50 min</div>
+‏    <button onclick="openBooking('Pensionär klippning långt hår')">Boka</button>
+‏</div>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Kontakt</h2>
-    <p>📍 Sofielundsvägen 7, 121 32 Enskededalen</p>
-    <p>📞 0768384208</p>
-    <p>📧 Email: <a href="mailto:sanduce86@gmail.com">sanduce86@gmail.com</a></p>
-    <p>📸 Instagram: <a href="https://www.instagram.com/chupi_salong">@chupi_salong</a></p>
-  </section>
+‏<div class="service-item">
+‏    <div><strong>Keratin behandling Re-Born</strong><br>1500 kr - 135 min</div>
+‏    <button onclick="openBooking('Keratin behandling Re-Born')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Helfärgning</strong><br>990 kr - 105 min</div>
+‏    <button onclick="openBooking('Helfärgning')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Bottenfärgning</strong><br>790 kr - 90 min</div>
+‏    <button onclick="openBooking('Bottenfärgning')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Paket behandling kort hår</strong><br>2270 kr - 195 min</div>
+‏    <button onclick="openBooking('Paket behandling kort hår')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Slingor kort hår</strong><br>1570 kr - 180 min</div>
+‏    <button onclick="openBooking('Slingor kort hår')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Slingor långt hår</strong><br>1870 kr - 180 min</div>
+‏    <button onclick="openBooking('Slingor långt hår')">Boka</button>
+‏</div>
+‏<div class="service-item">
+‏    <div><strong>Paket behandling långt hår</strong><br>2570 kr - 225 min</div>
+‏    <button onclick="openBooking('Paket behandling långt hår')">Boka</button>
+‏</div>
+‏</section>
 
-  <script>
-    function getBookingDetails() {
-      const name = document.getElementById("name").value;
-      const service = document.getElementById("service").value;
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      return { name, service, date, time };
+<!-- ==========================
+‏     BOOKING FORM
+=========================== -->
+‏<div class="booking-form" id="bookingForm">
+‏<h2>Boka Tid</h2>
+‏<label>Namn och Efternamn</label>
+‏<input type="text" id="name" placeholder="Ditt namn">
+‏<label>Datum</label>
+‏<input type="date" id="date">
+‏<label>Tid</label>
+‏<input type="time" id="time">
+‏<label>Tjänst</label>
+‏<input type="text" id="service" readonly>
+‏<button onclick="sendBooking()">Skicka Bokning</button>
+‏</div>
+
+‏<footer>
+‏<p>Telefon: 0768384208 | Email: sanduce86@gmail.com</p>
+‏</footer>
+
+‏<script>
+‏function openBooking(serviceName){
+‏    document.getElementById('bookingForm').style.display='block';
+‏    document.getElementById('service').value=serviceName;
+‏    window.scrollTo({top: document.getElementById('bookingForm').offsetTop-20,behavior:'smooth'});
+}
+
+‏function sendBooking(){
+‏    const name=document.getElementById('name').value.trim();
+‏    const date=document.getElementById('date').value;
+‏    const time=document.getElementById('time').value;
+‏    const service=document.getElementById('service').value;
+
+‏    if(!name||!date||!time){
+‏        alert('Vänligen fyll i alla fält');
+‏        return;
     }
 
-    function sendWhatsApp() {
-      const { name, service, date, time } = getBookingDetails();
-      const phoneNumber = "46768384208"; // شماره با کد کشور
-      const message = `Hej! Jag heter ${name} och vill boka:\n\nTjänst: ${service}\nDatum: ${date}\nTid: ${time}\n\nTack!`;
-      const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
-    }
+‏    const message=`Bokning:\nNamn: ${name}\nTjänst: ${service}\nDatum: ${date}\nTid: ${time}`;
 
-    function sendEmail() {
-      const { name, service, date, time } = getBookingDetails();
-      const subject = `Bokning från ${name}`;
-      const body = `Hej!\n\nJag vill boka:\n\nTjänst: ${service}\nDatum: ${date}\nTid: ${time}\n\nMvh,\n${name}`;
-      const email = "sanduce86@gmail.com"; // ایمیل مقصد
-      const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = url;
+‏    // WhatsApp
+‏    const whatsappNumber='46768384208';
+‏    const whatsappUrl=`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+‏    // Email
+‏    const email='sanduce86@gmail.com';
+‏    const mailtoUrl=`mailto:${email}?subject=${encodeURIComponent('Bokning')}&body=${encodeURIComponent(message)}`;
+
+‏    if(confirm('Skicka bokning via WhatsApp? OK för WhatsApp, Avbryt för Email')){
+‏        window.open(whatsappUrl,'_blank');
+‏    } else{
+‏        window.open(mailtoUrl,'_blank');
     }
-  </script>
-</body>
-</html>
+}
+‏</script>
+
+‏</body>
+‏</html>
